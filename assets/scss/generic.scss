@@ -1,0 +1,1151 @@
+@import "_normalize";
+
+body,
+input,
+select,
+textarea,
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: helveticaNeue, "Helvetica Neue", Arial;
+}
+
+.container {
+	position: relative;
+	width: 840px;
+	max-width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+// HEADER
+// ======================================
+
+#header {
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	width: 100%;
+	height: 50px;
+	background-color: #669966;
+	backface-visibility: hidden;
+	box-shadow: 0px 4px 10px -2px rgba(0, 0, 0, 0.25);
+
+	.container {
+		height: 100%;
+	}
+
+	.logo {
+		overflow: hidden;
+		position: absolute;
+		top: -16px;
+		left: 50%;
+		width: 90px;
+		height: 90px;
+		transform: translate3d(-50%, 0, 0);
+	}
+}
+
+.header-helper {
+	height: 50px;
+}
+
+.nav-button {
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	padding: 20px 0;
+	cursor: pointer;
+	border: 0;
+	background: none;
+	appearance: none;
+	transform: translate3d(0, -50%, 0);
+
+	span {
+		float: left;
+		margin-right: 8px;
+		margin-top: -11px;
+		margin-bottom: -11px;
+		line-height: 30px;
+		direction: ltr;
+		font-size: 16px;
+		font-weight: 700;
+		color: #fff;
+		pointer-events: none;
+		transition: all .3s linear;
+	}
+
+	.lines {
+		position: relative;
+		float: left;
+		width: 40px;
+		height: 5px;
+		pointer-events: none;
+		background-color: #fff;
+		transition: all .3s linear;
+
+		&::before,
+		&::after {
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 5px;
+			content: "";
+			background-color: #fff;
+			transition: all .3s linear;
+			transform-origin: 0.28571rem center;
+		}
+
+		&::before {
+			top: 10px;
+		}
+
+		&::after {
+			top: -10px;
+		}
+	}
+
+	amp-sidebar[side][open]+#header & {
+		transform: scale3d(0.8, 0.8, 0.8) translate3d(0, -50%, 0);
+
+		.lines {
+			background-color: transparent;
+
+			&::before,
+			&::after {
+				top: 0;
+				transform-origin: 50% 50%;
+			}
+
+			&::before {
+				transform: rotate3d(0, 0, 1, 45deg);
+			}
+
+			&::after {
+				transform: rotate3d(0, 0, 1, -45deg);
+			}
+		}
+	}
+}
+
+
+// SIDEBAR
+// ======================================
+
+div[class*="sidebar-mask"] {
+	opacity: 0.8;
+}
+
+.sidebar {
+	width: 280px;
+	background-color: #383638;
+
+	.close-btn {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		font-size: 20px;
+		color: #fff;
+		cursor: pointer;
+		border: 0;
+		background: #424242;
+		appearance: none;
+	}
+
+	.logo {
+		display: block;
+		width: 140px;
+		margin: 20px auto;
+	}
+
+	nav {
+		position: relative;
+
+		a {
+			position: relative;
+			display: block;
+			line-height: 24px;
+			padding: 9px 12px;
+			font-family: 'Oswald', sans-serif;
+			font-size: 18px;
+			font-weight: 300;
+			color: #fff;
+			text-transform: uppercase;
+			text-decoration: none;
+			letter-spacing: -0.25px;
+			transition: all .3s linear;
+		}
+
+		li {
+			position: relative;
+			border-bottom: 1px solid #424242;
+
+			&.selected {
+				background-color: #4a4a4a;
+
+				a {
+					background-color: #669966;
+				}
+			}
+
+			&.small {
+				border-bottom-color: #3e3e3e;
+
+				a {
+					line-height: 18px;
+					padding: 5px 12px;
+					font-size: 12px;
+					color: rgba(255, 255, 255, 0.5);
+				}
+			}
+		}
+	}
+}
+
+.socials {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	text-align: center;
+
+	>div {
+		overflow: hidden;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	a {
+		position: relative;
+		float: left;
+		width: 30px;
+		height: 30px;
+		margin-left: 3px;
+		margin-right: 3px;
+		background: url(assets/images/socials.png) no-repeat;
+		background-size: auto 30px;
+
+		&.in {
+			background-position: -115px 0;
+		}
+
+		&.tw {
+			background-position: -38px 0;
+		}
+	}
+}
+
+
+
+// CONTENT
+// ======================================
+
+.sub-page {
+	.container {
+		+.container {
+			margin-top: 20px;
+		}
+	}
+
+	.page-text {
+		position: relative;
+		padding: 0 15px;
+		line-height: 1.4;
+		font-size: 13px;
+		text-align: justify;
+
+		h3 {
+			margin: 0 0 5px;
+			line-height: 24px;
+			font-size: 16px;
+			font-weight: 700;
+			text-align: left;
+			color: #191919;
+			letter-spacing: -0.25px;
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+		}
+
+		.readmore {
+			position: absolute;
+			right: 10px;
+			bottom: 0;
+			padding: 0 20px;
+			line-height: 28px;
+			font-size: 13px;
+			font-weight: 400;
+			color: #191919;
+			text-decoration: none;
+			background-color: #d4d4d4;
+			transition: all .3s linear;
+
+			&:hover {
+				opacity: 0.7;
+			}
+		}
+	}
+}
+
+.blog-list {
+	.container {
+		padding-bottom: 20px;
+		background-color: #f5f4f3;
+	}
+
+	.page-text {
+		padding-bottom: 34px;
+	}
+}
+
+.page-title {
+	position: relative;
+	margin: 0 0 10px;
+	padding: 7px 15px;
+	line-height: 16px;
+	font-size: 12px;
+	font-weight: 700;
+	color: #191919;
+	text-align: left;
+	text-transform: uppercase;
+	letter-spacing: -0.25px;
+	background-color: #d4d4d4;
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	&.notched {
+		margin-bottom: 20px;
+		padding-left: 15px;
+		padding-right: 15px;
+
+		&::after {
+			position: absolute;
+			left: 0;
+			bottom: -18px;
+			content: "";
+			border-style: solid;
+			border-width: 18px 20px 0 0;
+			border-color: #d4d4d4 transparent transparent transparent;
+		}
+	}
+
+	&.green {
+		color: #fff;
+		background-color: #669966;
+
+		&.notched {
+			background-color: #2a733a;
+
+			&::after {
+				border-top-color: #2a733a;
+			}
+		}
+	}
+
+	&.yellow {
+		color: #fff;
+		background-color: #e5ae08;
+
+		&.notched {
+			background-color: #d6a307;
+
+			&::after {
+				border-top-color: #d6a307;
+			}
+		}
+	}
+
+	&.purple {
+		color: #fff;
+		background-color: #ad688e;
+
+		&.notched {
+			background-color: #9b3367;
+
+			&::after {
+				border-top-color: #9b3367;
+			}
+		}
+	}
+}
+
+
+
+// FOOTER
+// ======================================
+
+#footer {
+	position: relative;
+	background-color: #191919;
+
+	.container {
+		padding: 10px;
+	}
+
+	.copyright {
+		line-height: 1.2;
+		font-size: 12px;
+		color: #808080;
+	}
+}
+
+
+// MAIN BLOG
+// ======================================
+
+#main-blog-text {
+	position: relative;
+	z-index: 0;
+	margin-bottom: 20px;
+
+	.container {
+		padding-bottom: 10px;
+		background-color: #f5f4f3;
+	}
+
+	.blog-title {
+		position: relative;
+		margin: 0;
+		padding: 5px 15px;
+		line-height: 20px;
+		font-size: 12px;
+		font-weight: 700;
+		color: #191919;
+		text-align: left;
+		text-transform: uppercase;
+		letter-spacing: -0.25px;
+		background-color: #d4d4d4;
+	}
+
+	.blog-text {
+		position: relative;
+		padding: 15px 15px 34px;
+		line-height: 1.4;
+		font-size: 13px;
+		text-align: justify;
+
+		h3 {
+			margin: 0 0 5px;
+			line-height: 24px;
+			font-size: 16px;
+			font-weight: 700;
+			text-align: left;
+			color: #191919;
+			letter-spacing: -0.25px;
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+		}
+	}
+
+	.readmore {
+		position: absolute;
+		right: 15px;
+		bottom: 0;
+		padding: 0 20px;
+		line-height: 28px;
+		font-size: 13px;
+		font-weight: 400;
+		color: #191919;
+		text-decoration: none;
+		background-color: #d4d4d4;
+		transition: all .3s linear;
+
+		&:hover {
+			opacity: 0.7;
+		}
+	}
+}
+
+
+// BETS ADS
+// ======================================
+
+.tkads {
+	position: relative;
+	z-index: 0;
+
+	.tkad {
+		margin-bottom: 2px;
+	}
+}
+
+.fixed-tkad {
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+
+	+.fixed-tkad-helper {
+		height: 155px;
+		background-color: #191919;
+	}
+}
+
+
+// BETS TABLE
+// ======================================
+
+.bets {
+	position: relative;
+	z-index: 0;
+	margin-bottom: 20px;
+	line-height: 1.2;
+	font-size: 12px;
+	font-weight: 400;
+	text-align: center;
+	letter-spacing: -0.25px;
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.bets-body .col:not(.comment) a:hover {
+		color: #f00;
+		text-decoration: underline;
+	}
+
+	*[title] {
+		cursor: pointer;
+	}
+
+	.text-left {
+		text-align: left;
+	}
+
+	.text-right {
+		text-align: right;
+	}
+
+	.bets-table-title {
+		margin: 0;
+		padding-left: 10px;
+		line-height: 18px;
+		font-family: inherit;
+		font-size: 12px;
+		font-weight: 700;
+		text-align: left;
+	}
+}
+
+.bets-table,
+.bets-header,
+.bets-body-header,
+.bets-body,
+.bets-footer,
+.bets-footer-button {
+	position: relative;
+	float: left;
+	width: 100%;
+}
+
+.bets-header,
+.bets-body-header,
+.bets-body,
+.bets-footer {
+	.col {
+		height: 32px;
+	}
+}
+
+.bets-body,
+.bets-footer {
+	.row {
+		border: 1px solid #f1efef;
+		border-top: none;
+		background-color: #fff;
+
+		.col {
+			border-left: 1px solid #f1efef;
+
+			&:first-child {
+				border-left: none;
+			}
+
+			.col-inner+.col-inner {
+				border-top: 1px solid #f1efef;
+			}
+		}
+
+		&:nth-child(odd) {
+			background-color: #f5f4f3;
+			border-left: 1px solid #e4e4e4;
+			border-bottom: 1px solid #e4e4e4;
+
+			.col {
+				border-left: 1px solid #e4e4e4;
+
+				&:first-child {
+					border-left: none;
+				}
+
+				.col-inner+.col-inner {
+					border-top: 1px solid #e4e4e4;
+				}
+			}
+		}
+	}
+}
+
+
+.bets-body {
+	.row {
+		.col.comment {
+			height: auto;
+			border-left: 0;
+			border-top: 1px solid #f1efef;
+
+			.col-inner {
+				height: auto;
+				padding-top: 5px;
+				padding-bottom: 5px;
+				font-size: 110%;
+				text-align: left;
+
+				>* {
+					text-overflow: inherit;
+					white-space: inherit;
+				}
+			}
+		}
+
+		&:nth-child(odd) {
+			.col.comment {
+				border-top: 1px solid #e4e4e4;
+			}
+		}
+	}
+
+	.col-title {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}
+
+.bets-footer {
+	line-height: 20px;
+	font-size: 12px;
+	font-weight: 700;
+	text-align: right;
+	border: 1px solid #f1efef;
+	border-top: none;
+	background-color: #fdfdfd;
+
+	.total {
+		font-size: 110%;
+
+		span {
+			margin-left: 20px;
+			font-weight: 700;
+		}
+	}
+}
+
+.bets-footer-button {
+	a {
+		display: block;
+		margin: 2px 0;
+		padding: 5px;
+		line-height: 18px;
+		font-size: 130%;
+		text-align: center;
+		text-decoration: none;
+		border: 1px solid #f1efef;
+		background-color: #f5f4f3;
+		transition: all .3s linear;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+
+.bets-table {
+	.row {
+		position: relative;
+		display: flex;
+		width: 100%;
+		flex-wrap: wrap;
+	}
+
+	.col {
+		position: relative;
+		display: flex;
+		width: 100%;
+		height: 28px;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+
+	.col-inner {
+		position: relative;
+		display: flex;
+		width: 100%;
+		height: 100%;
+		padding-left: 5px;
+		padding-right: 5px;
+		align-items: center;
+		flex-wrap: wrap;
+
+		>* {
+			overflow: hidden;
+			width: 100%;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+
+	.col-title {
+		display: block;
+	}
+
+	.c1 {
+		width: 8%;
+	}
+
+	.c2 {
+		width: 6%;
+	}
+
+	.c3 {
+		width: 60%;
+	}
+
+	.c4 {
+		width: 8%;
+	}
+
+	.c5 {
+		width: 8%;
+	}
+
+	.c6 {
+		width: 10%;
+	}
+
+	.comment {
+		.col-title {
+			white-space: normal;
+			line-height: 1.2;
+			font-size: 110%;
+			text-align: left;
+		}
+
+		.comment-text {
+			border: 2px solid transparent;
+			border-radius: 2px;
+			margin: 0;
+		}
+
+		&.comment-tkad {
+			.tkad {
+				position: relative;
+				z-index: 1;
+				float: right;
+				width: 120px;
+				height: 40px;
+				margin-left: 5px;
+			}
+		}
+	}
+
+	.bet-type-ms,
+	.bet-type-kg,
+	.bet-type-tg {
+		width: calc(100% + 2px);
+		margin-left: -1px;
+	}
+
+	.bet-type-ms {
+		background-color: #c7e0c7;
+	}
+
+	.bet-type-kg {
+		background-color: #dac1d1;
+	}
+
+	.bet-type-tg {
+		background-color: #feedbc;
+	}
+
+	.wrong,
+	.correct {
+		width: calc(100% + 3px);
+		margin-left: -1px;
+		color: #fff;
+	}
+
+	.wrong {
+		background-color: #cc4d53;
+	}
+
+	.correct {
+		background-color: #669966;
+	}
+
+	&.green {
+		.bets-header {
+			.row {
+				color: #fff;
+				border: 1px solid #256332;
+				background-color: #2a733a;
+			}
+
+			.col {
+				border-left: 1px solid #256332;
+			}
+		}
+
+		.bets-body-header {
+			.row {
+				color: #fff;
+				border: 1px solid #578a57;
+				border-top: none;
+				background-color: #669966;
+			}
+
+			.col {
+				border-left: 1px solid #578a57;
+			}
+		}
+
+		.bets-footer-button a {
+			color: #fff;
+			border: 1px solid #578a57;
+			background-color: #669966;
+		}
+	}
+
+	&.yellow {
+		.bets-header {
+			.row {
+				color: #fff;
+				border: 1px solid #c79909;
+				background-color: #d6a307;
+			}
+
+			.col {
+				border-left: 1px solid #c79909;
+			}
+		}
+
+		.bets-body-header {
+			.row {
+				color: #fff;
+				border: 1px solid #d09f0b;
+				border-top: none;
+				background-color: #e5ae08;
+			}
+
+			.col {
+				border-left: 1px solid #d09f0b;
+			}
+		}
+
+		.bets-footer-button a {
+			color: #fff;
+			border: 1px solid #d09f0b;
+			background-color: #e5ae08;
+		}
+	}
+
+	&.purple {
+		.bets-header {
+			.row {
+				color: #fff;
+				border: 1px solid #8e275b;
+				background-color: #9b3367;
+			}
+
+			.col {
+				border-left: 1px solid #8e275b;
+			}
+		}
+
+		.bets-body-header {
+			.row {
+				color: #fff;
+				border: 1px solid #a55681;
+				border-top: none;
+				background-color: #ad688e;
+			}
+
+			.col {
+				border-left: 1px solid #a55681;
+			}
+		}
+
+		.bets-footer-button a {
+			color: #fff;
+			border: 1px solid #a55681;
+			background-color: #ad688e;
+		}
+	}
+
+	&.blue {
+		.bets-header {
+			.row {
+				color: #fff;
+				border: 1px solid #0f5082;
+				background-color: #135384;
+			}
+
+			.col {
+				border-left: 1px solid #0f5082;
+			}
+		}
+
+		.bets-body-header {
+			.row {
+				color: #fff;
+				border: 1px solid #2c6fa7;
+				border-top: none;
+				background-color: #367eb9;
+			}
+
+			.col {
+				border-left: 1px solid #2c6fa7;
+			}
+		}
+
+		.bets-footer-button a {
+			color: #fff;
+			border: 1px solid #2c6fa7;
+			background-color: #367eb9;
+		}
+	}
+
+}
+
+
+// BANKO
+// ======================================
+
+.banko {
+	.bets-table {
+		.c1 {
+			width: 12%;
+		}
+
+		.c2 {
+			width: 8%;
+		}
+
+		.c3 {
+			width: 8%;
+		}
+
+		.c4 {
+			width: 51%;
+		}
+
+		.c5 {
+			width: 12%;
+		}
+
+		.c6 {
+			width: 9%;
+		}
+	}
+}
+
+
+// SUSPENDED
+// ======================================
+
+.suspended {
+	.bets-table {
+		.bets-body-header {
+			.col {
+				height: 46px;
+			}
+		}
+
+		.c1 {
+			width: 26%;
+		}
+
+		.c2 {
+			width: 8%;
+		}
+
+		.c3 {
+			width: 20%;
+		}
+
+		.c4 {
+			width: 17%;
+		}
+
+		.c5 {
+			width: 14%;
+		}
+
+		.c6 {
+			width: 15%;
+		}
+	}
+}
+
+@media only screen and (max-width: 840px) {
+	body {
+		font-size: 13px;
+	}
+
+	.bets-table {
+		.c1 {
+			width: 10%;
+		}
+
+		.c2 {
+			width: 8%;
+		}
+
+		.c3 {
+			width: 50%;
+		}
+
+		.c4 {
+			width: 10%;
+		}
+
+		.c5 {
+			width: 10%;
+		}
+
+		.c6 {
+			width: 12%;
+		}
+	}
+
+	.fixed-tkad {
+		+.fixed-tkad-helper {
+			height: auto;
+			padding-top: 18.4211%;
+		}
+	}
+}
+
+@media only screen and (max-width: 575px) {
+	body {
+		font-size: 12px;
+	}
+
+	.bets {
+		font-size: 11px;
+	}
+
+	.bets-table {
+		.c1 {
+			width: 11%;
+		}
+
+		.c2 {
+			width: 10%;
+		}
+
+		.c3 {
+			width: 39%;
+		}
+
+		.c4 {
+			width: 14%;
+		}
+
+		.c5 {
+			width: 11%;
+		}
+
+		.c6 {
+			width: 15%;
+		}
+	}
+
+	.banko {
+		.bets-table {
+			.c1 {
+				width: 13%;
+			}
+
+			.c2 {
+				width: 13%;
+			}
+
+			.c3 {
+				width: 13%;
+			}
+
+			.c4 {
+				width: 30%;
+			}
+
+			.c5 {
+				width: 18%;
+			}
+
+			.c6 {
+				width: 13%;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 430px) {
+	body {
+		font-size: 11px;
+	}
+
+	.bets {
+		font-size: 10px;
+	}
+}
+
+@media only screen and (max-width: 375px) {
+	body {
+		font-size: 10px;
+	}
+
+	.bets {
+		font-size: 9px;
+	}
+
+	.bets-table {
+		.col-inner {
+			padding-left: 3px;
+			padding-right: 3px;
+		}
+	}
+
+	.suspended {
+		.bets-table {
+			.bets-body-header {
+				.col {
+					height: 34px;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 359px) {
+	.bets {
+		font-size: 8px;
+	}
+}

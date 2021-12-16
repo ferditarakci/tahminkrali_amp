@@ -1,0 +1,145 @@
+﻿* {
+	outline: none;
+	-moz-outline: none;
+	-moz-user-focus: none;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html, body, div, p, span, h1, h2, h3, h4, h5, h6, a, img, iframe, pre, del, s, strike, ins, u, em, i, strong, b,
+address, abbr, acronym, dfn, code, kbd, var, object, applet, blockquote, small, ol, ul, li, dl, dt, dd,
+fieldset, form, label, legend, sub, sup, q, samp, table, caption, tbody, tfoot, thead, tr, th, td, article,
+main, aside, figure, figcaption, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+main, article, aside, figure, figcaption, footer, header, hgroup, nav, section, details {
+	display: block;
+}
+
+html {
+	font-family: sans-serif;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	touch-action: manipulation;
+	-ms-overflow-style: scrollbar;
+}
+
+body {
+	line-height: 1.4em;
+	font-size: 15px;
+	font-weight: 400;
+	color: #3f3733;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0 0 10px;
+	font-weight: 700;
+	font-size: 20px;
+}
+
+h2 {
+	font-size: 18px;
+}
+
+h3 {
+	font-size: 16px;
+}
+
+h4 {
+	font-size: 15px;
+}
+
+h5 {
+	font-size: 14px;
+}
+
+h6 {
+	font-size: 13px;
+}
+
+p {
+	margin: 0 0 20px;
+
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+}
+
+p + {
+	h1, h2, h3, h4, h5, h6 {
+		margin-top: 30px;
+	}
+}
+
+ul, ol {
+	margin: 10px 0;
+	padding-left: 30px;
+}
+
+nav {
+	* {
+		margin: 0;
+		padding: 0;
+		line-height: inherit;
+	}
+
+	ul, ol {
+		list-style: none;
+	}
+}
+
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+td, th {
+	padding: 0;
+}
+
+
+// CLEAR FLOATED ELEMENTS
+// ======================================
+
+/* http://sonspring.com/journal/clearing-floats */
+
+.clr, .clear {
+	overflow: hidden;
+	display: block;
+	visibility: hidden;
+	clear: both;
+	width: 0;
+	height: 0;
+}
+
+/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
+.container, .clearfix {
+	display: block;
+
+	&::before, &::after {
+		overflow: hidden;
+		visibility: hidden;
+		display: block;
+		width: 0;
+		height: 0;
+		line-height: 0;
+		font-size: 0;
+		content: ".";
+	}
+
+	&::after {
+		clear: both;
+	}
+}
